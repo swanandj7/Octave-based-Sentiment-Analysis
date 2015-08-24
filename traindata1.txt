@@ -1,0 +1,51 @@
+function Xhappy5 = TestData(n)
+  
+Xhappy5 = zeros(n,500);
+
+  for i=1 : 250
+    while(1)
+      k=randi(n);
+      if(Xhappy5(k,i)~=1)
+         Xhappy5(k,i)=1;
+         break;
+      endif
+    end
+end
+
+for i=251 : 300
+  for j=1 : 2
+    while(1)
+      k=randi(n);
+      if(Xhappy5(k,i)~=1)
+         Xhappy5(k,i)=1;
+         break;
+      endif
+     end
+   end
+end
+
+for i=300 : 351
+  for j=1 : 3
+    while(1)
+      k=randi(n);
+      if(Xhappy5(k,i)~=1)
+         Xhappy5(k,i)=1;
+         break;
+      endif
+     end
+   end
+end
+
+for i=351 : 400
+  for j=1 : 4
+    while(1)
+      k=randi(n);
+      if(Xhappy5(k,i)~=1)
+         Xhappy5(k,i)=1;
+         break;
+      endif
+     end
+   end
+end
+
+end
