@@ -39,6 +39,14 @@
     	 
     	 }
 
+	 #chat_receive{
+    	 
+    	 padding: 5px;
+    	 border: 1px solid #00CCFF;
+    	 float: left;
+    	 width: 70%;
+    	 
+    	 }
 
     
     	#c1, #c2 {
@@ -76,7 +84,7 @@
       <div class="jumbotron">
         <h2>How do we perform Sentiment analysis</h2>
         <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">View the code &raquo;</a></p>
+        <p><a class="btn btn-lg btn-success" target="_blank" href="https://github.com/swanandj7/Octave-based-Sentiment-Analysis" role="button">View the code &raquo;</a></p>
       </div>
 
       <div class="container-liquid" >
@@ -109,7 +117,7 @@
 	<hr>
 
       <footer class="footer">
-        <p>&copy; Company 2015</p>
+        <p>&copy; Raptor 2015</p>
       </footer>
 
     </div> <!-- /container -->
@@ -118,9 +126,10 @@
     <script>
     
     var child_i = 0;
+    var child_r = 0;
     
     $(document).ready(function(){
-    alert("doc ready");
+    //alert("doc ready");
     			$("#c1c").click(function(){
     			
     					var text = document.getElementById('c1').value;
@@ -129,7 +138,7 @@
     					// Create a text node
 						text_insert.appendChild(textup);                 
     					
-    					 text_insert.setAttribute("id", "chat");
+    					text_insert.setAttribute("id", "chat");
     					
     					var div1 = document.getElementById('div1');
     					
@@ -141,15 +150,100 @@
     					}
     					
     					div1.insertBefore(text_insert, div1.childNodes[child_i]);
-    					
-    					
     					child_i = child_i + 1;
-    			
+    					
+    					   					
+    					<!--push to second persons chat -->
+    					var div2 = document.getElementById('div2');
+    					
+    					
+    					var text_rec = document.getElementById('c1').value;
+    					var text_insert_rec = document.createElement("P");
+    					var	textup_rec = document.createTextNode(text_rec);  
+						text_insert_rec.appendChild(textup_rec);                 
+    					
+    					 text_insert_rec.setAttribute("id", "chat_receive");
+    					 
+    					 
+    					 if(div2.childNodes.length > 9){
+    					
+    						div2.removeChild(div2.childNodes[0]);
+    						child_r--;
+    					
+    					}
+    				
+    					div2.insertBefore(text_insert_rec, div2.childNodes[child_r]);
+    					
+    					child_r++;
+    					
     					document.getElementById('c1').value = "";
     			
+    					<!--end of changes-->
     			
     			});    //c1c.click ends
     
+    
+    			$("#c2c").click(function(){
+    			
+    					var text = document.getElementById('c2').value;
+    					var text_insert = document.createElement("P");
+    					var	textup = document.createTextNode(text);  
+    					// Create a text node
+						text_insert.appendChild(textup);                 
+    					
+    					 text_insert.setAttribute("id", "chat");
+    					
+    					var div2 = document.getElementById('div2');
+    					
+    					if(div2.childNodes.length > 9){
+    					
+    						div1.removeChild(div2.childNodes[0]);
+    						child_r--;
+    					
+    					}
+    					
+    					div2.insertBefore(text_insert, div2.childNodes[child_r]);
+    					
+    					
+    					child_r = child_r + 1;
+    			
+    			
+    					<!--push to second persons chat -->
+    					var div1 = document.getElementById('div1');
+    					
+    					
+    					var text_rec = document.getElementById('c2').value;
+    					var text_insert_rec = document.createElement("P");
+    					var	textup_rec = document.createTextNode(text_rec);  
+						text_insert_rec.appendChild(textup_rec);                 
+    					
+    					 text_insert_rec.setAttribute("id", "chat_receive");
+    					 
+    					 
+    					 if(div1.childNodes.length > 9){
+    					
+    						div1.removeChild(div1.childNodes[0]);
+    						child_i--;
+    					
+    					}
+    					
+    					div1.insertBefore(text_insert_rec, div1.childNodes[child_i]);
+    					child_i++;
+    		
+    			
+    					<!--end of changes-->
+    			
+    			
+    			
+    			
+    					document.getElementById('c2').value = "";
+    			
+    					//document.getElementById('c2').value = "";
+    					
+    					
+    			
+    			
+    			});    //c1c.click ends
     
     
 
