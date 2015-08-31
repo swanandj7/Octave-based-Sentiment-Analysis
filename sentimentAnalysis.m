@@ -48,24 +48,41 @@ if length(happy_indices)>0
   Xhappy1 = TestData1(2005);
   Xhappy1=Xhappy1';
   %happy
+
   fprintf('\nTraining Linear SVM (Emotion Classifier #happy5)\n');
   modelhappy5 = svmTrain(Xhappy5, yhappy5, C, @linearKernel);
+  save('modelhappy5.mat','modelhappy5');
+  
   p = svmPredict(modelhappy5, Xhappy5);
   fprintf('Training Accuracy(Emotion Classifier #happy5): %f\n', mean(double(p == yhappy5)) * 100);
 
   fprintf('\nTraining Linear SVM (Emotion Classifier #happy3)\n');
   modelhappy3 = svmTrain(Xhappy3, yhappy3, C, @linearKernel);
+  save('modelhappy3.mat','modelhappy3');
+  
   p = svmPredict(modelhappy3, Xhappy3);
   fprintf('Training Accuracy(Emotion Classifier #happy3): %f\n', mean(double(p == yhappy3)) * 100);
 
   fprintf('\nTraining Linear SVM (Emotion Classifier #happy1)\n');
   modelhappy1 = svmTrain(Xhappy1, yhappy1, C, @linearKernel);
+    save('modelhappy1.mat','modelhappy1');
+    
   p = svmPredict(modelhappy1, Xhappy1);
   fprintf('Training Accuracy(Emotion Classifier #happy1): %f\n', mean(double(p == yhappy1)) * 100);
 
-  phappy5 = svmPredict(modelhappy5,happy_features); 
-  phappy3 = svmPredict(modelhappy3,happy_features);
-  phappy1 = svmPredict(modelhappy1,happy_features);
+
+
+
+
+%{
+  modelhappy5 = load('modelhappy5.mat','-mat');
+ 
+  modelhappy3 = load('modelhappy3.mat','-mat');
+  modelhappy1 = load('modelhappy1.mat','-mat');
+%}
+  phappy5 = svmPredict(modelhappy5,happy_features)
+  phappy3 = svmPredict(modelhappy3,happy_features)
+  phappy1 = svmPredict(modelhappy1,happy_features)
 
  endif
 %sad
@@ -94,20 +111,30 @@ Xsad1=Xsad1';
 
 fprintf('\nTraining Linear SVM (Emotion Classifier #sad5)\n');
 modelsad5 = svmTrain(Xsad5, ysad5, C, @linearKernel);
+  save('modelsad5.mat','modelsad5');
 p = svmPredict(modelsad5, Xsad5);
 fprintf('Training Accuracy(Emotion Classifier #sad5): %f\n', mean(double(p == ysad5)) * 100);
 
 fprintf('\nTraining Linear SVM (Emotion Classifier #sad3)\n');
 modelsad3 = svmTrain(Xsad3, ysad3, C, @linearKernel);
+ save('modelsad3.mat','modelsad3');
 p = svmPredict(modelsad3, Xsad3);
 fprintf('Training Accuracy(Emotion Classifier #sad3): %f\n', mean(double(p == ysad3)) * 100);
 
 fprintf('\nTraining Linear SVM (Emotion Classifier #sad1)\n');
 modelsad1 = svmTrain(Xsad1, ysad1, C, @linearKernel);
+ save('modelsad1.mat','modelsad1');
 p = svmPredict(modelsad1, Xsad1);
 fprintf('Training Accuracy(Emotion Classifier #sad1): %f\n', mean(double(p == ysad1)) * 100);
 
-psad5 = svmPredict(modelsad5,sad_features);
-psad3 = svmPredict(modelsad3,sad_features);
-psad1 = svmPredict(modelsad1,sad_features);
+
+
+%{
+  modelsad5 =   load('modelsad5.mat','-mat');
+  modelsad3 =   load('modelsad3.mat','-mat');
+  modelsad1 =   load('modelsad1.mat','-mat');
+%}
+psad5 = svmPredict(modelsad5,sad_features)
+psad3 = svmPredict(modelsad3,sad_features)
+psad1 = svmPredict(modelsad1,sad_features)
 endif
